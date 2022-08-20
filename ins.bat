@@ -1,0 +1,1 @@
+copy C:\Work\FLSUN-Marlin\MARLIN_WORKING\.pio\build\BIGTREE_OCTOPUS_V1\firmware.bin .

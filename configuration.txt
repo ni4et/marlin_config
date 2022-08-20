@@ -1,0 +1,114 @@
+@ Configuration for octopus board and 24V motors
+@ DHT 3/2022
+
+#define CUSTOM_MACHINE_NAME "Flsun_cube"
+#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //BT
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define Z_SAFE_HOMING
+#define EXTRUDERS 2
+#define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
+@ #define PSU_ACTIVE_HIGH true     // Set 'false' for ATX, 'true' for X-Box
+#define TEMP_SENSOR_0 1000
+#define TEMP_SENSOR_1 1000
+#define TEMP_SENSOR_BED 1
+#define PIDTEMPBED
+#define EXTRUDE_MAXLENGTH 600
+#define E0_AUTO_FAN_PIN FAN2_PIN
+#define E1_AUTO_FAN_PIN FAN2_PIN
+#define USE_CONTROLLER_FAN
+#define CONTROLLER_FAN_PIN FAN1_PIN
+
+#define BOARD_ST7920_DELAY_1               240 // These will cause compile fails in xxpins.h
+#define BOARD_ST7920_DELAY_2                160
+#define BOARD_ST7920_DELAY_3               1000
+#define HOTEND_OFFSET_X {0.0, 18.20} // (in mm) for each extruder, offset of the hotend on the X axis
+#define HOTEND_OFFSET_Y {0.0, 0.0}  // (in mm) for each extruder, offset of the hotend on the Y axis
+
+#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define X_DRIVER_TYPE  TMC2208
+#define Y_DRIVER_TYPE  TMC2208
+#define Z_DRIVER_TYPE  TMC2208
+#define E0_DRIVER_TYPE TMC2208
+#define E1_DRIVER_TYPE TMC2208
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 600, 410 }  //  2020-07-16 4Z mode
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 4, 750  }
+#define BLTOUCH
+#define Z_CLEARANCE_DEPLOY_PROBE    2 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     2.5 // Z Clearance between multiple probes
+#define Z_AFTER_PROBING           5 // Z position after probing is done
+
+#define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR false
+#define INVERT_Z_DIR true // For running without splitter 2020-07-16
+#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_UBL
+#define EXTRAPOLATE_BEYOND_GRID
+
+#define STRING_CONFIG_H_AUTHOR "(BigTreeTech, DHT-Octopus)" // Who made the changes.
+#define SERIAL_PORT 1 //BT
+#define BAUDRATE 115200 //BT
+#define SERIAL_PORT_2 -1 //BT
+#define EEPROM_SETTINGS      //BT// Persistent storage with M500 and M501
+#define EEPROM_AUTO_INIT   ///BT // Init EEPROM automatically on any errors.
+#define NOZZLE_PARK_MOVE   2   // Park motion: 0 = XY Move, 1 = X Only, 2 = Y Only, 3 = X before Y, 4 = Y before X
+#define SDSUPPORT  //BT
+#define BABYSTEPPING
+#define BABYSTEP_ZPROBE_OFFSET   // Combine M851 Z and Babystepping
+#define BABYSTEP_ZPROBE_GFX_OVERLAY
+#define LIN_ADVANCE
+
+#define ARC_SUPPORT
+#define FWRETRACT
+#define G26_MESH_VALIDATION
+#define NOZZLE_PARK_FEATURE
+#define ASSISTED_TRAMMING
+#define PINS_DEBUGGING
+#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define LCD_SET_PROGRESS_MANUALLY
+#define PSU_CONTROL
+#define PSU_ACTIVE_STATE HIGH
+#define AUTO_REPORT_POSITION
+#define MONITOR_DRIVER_STATUS
+
+#define X_BED_SIZE 250
+#define Y_BED_SIZE 260
+#define Z_MAX_POS 300
+
+#define BLTOUCH_SET_5V_MODE 
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#define USE_PROBE_FOR_Z_HOMING
+#define GRID_MAX_POINTS_X 5
+#define M114_DETAIL
+#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_SELECT_DIRECTION
+
+@ Sensorless homing -- supress warning
+#define DIAG_JUMPERS_REMOVED
+#define MULTIPLE_PROBING 2
+
+@ #define NOZZLE_TO_PROBE_OFFSET { 22, 0, 0 }
+
+#define GCODE_CASE_INSENSITIVE
+
+#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
+//#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
+//#define AUTO_POWER_E_FANS
+//#define AUTO_POWER_CONTROLLERFAN
+//#define AUTO_POWER_CHAMBER_FAN
+//#define AUTO_POWER_COOLER_FAN
+#define PSU_DEFAULT_OFF               // Keep power off until enabled directly with M80
+
+#define PREVENT_COLD_EXTRUSION
+
+#define GCODE_MACROS
+#define GCODE_MACROS_SLOTS       10  // Up to 10 may be used
+#define GCODE_MACROS_SLOT_SIZE  128  // Maximum length of a single macro
+#define CHOPPER_TIMING CHOPPER_DEFAULT_24V
+#define HYBRID_THRESHOLD
+#define Z_HYBRID_THRESHOLD       16
+#define E0_HYBRID_THRESHOLD     25
+#define E1_HYBRID_THRESHOLD     24
