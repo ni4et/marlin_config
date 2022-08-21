@@ -12,12 +12,38 @@
  Do this in a non-destructive way. The original files can be simply recovered.
  Allow for multiple passes with no effects from previous passes.
 """
-import os
-import locale
-#print(os.environ["PYTHONIOENCODING"])
 
-# Where is the marlin working directory from here:
-dWork='../MARLIN_WORKING/Marlin/'
+""" Add the following to .vscode/tasks.json:
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "customize",
+            "type": "shell",
+            "command": "python3",
+            "args": ["C:/Work/FLSUN-Marlin/marlin_config/marlin_config.py",
+                "${workspaceRoot}/Marlin"]
+
+
+        }
+    ]
+}
+"""
+
+
+
+import os
+import sys
+import locale
+from operator import mod
+from numpy import rec
+from sympy import re
+import tempfile as txf
+import locale
+
+#print(os.environ["PYTHONIOENCODING"])
 
 
 
@@ -25,10 +51,14 @@ dWork='../MARLIN_WORKING/Marlin/'
 # To reset all the changes and recover the original files set this to None
 # or pass an empty file.
 #dictFile=None
-dictFile='configuration.txt' # in same directory as where the script runs 
+dictFileName='configuration.txt' # in same directory as where the script runs 
+# The change dictionary file is in the same dir as this python script.
+dictFile=os.path.join(os.path.dirname(sys.argv[0]),dictFileName)
 
 
 # the files in the working directory:
+# Where is the marlin working directory from here:
+dWork=sys.argv[1] # Passed as an argument from tasks.json
 configPost='configuration_adv.h'
 configPre='configuration.h'
 
@@ -40,11 +70,6 @@ insrtStr='//+DHT' # Addded by tool.
 coutStr='//-DHT' # Unconditionally comment out
 
 
-from operator import mod
-from numpy import rec
-from sympy import re
-import tempfile as txf
-import locale
 
 
 # Marlin config file customizer.
@@ -205,9 +230,9 @@ def finish(inFile):
 def main():
     loadDictionary(dictFile)
     # In and out files can be the same:
-    translateFile(dWork+configPre)
-    translateFile(dWork+configPost)
-    finish(dWork+configPre)
+    translateFile(os.path.join(dWork,configPre))
+    translateFile(os.path.join(dWork,configPost))
+    finish(os.path.join(dWork,configPre))
 
 if __name__ == "__main__":
     main()
