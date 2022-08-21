@@ -11,13 +11,17 @@ The syntax of configuration.txt is like this.
 There is no required order, your changes will be placed in the target files where they belong.
 
 Commment lines look like this:
+
     @ #define NOZZLE_TO_PROBE_OFFSET { 22, 0, 0 }
 
 Lines that start with "#define" will replace lines in 
-#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
+
+
+    #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
 
 Lines that start with "//#define" will comment out the target line.
-//#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
+
+        //#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
 
 The resulting config file will look like this:
 ---------------------------
