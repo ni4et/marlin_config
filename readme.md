@@ -24,14 +24,20 @@ Lines that start with "//#define" will comment out the target line.
         //#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
 
 The resulting config file will look like this:
-        ---------------------------
+
         //#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
         #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin //+DHT 
         //-DHT#define AUTO_POWER_FANS         // Turn on PSU if fans need power
-        ---------------------------
+
 
 The first line is the original line as is.
+
 The second line is the replacement.
+
 The third line is the original line, now commented out.
-The special strings '//-DHT' and '//+DHT' are markers so that the changes we made can be found.  This should be almost like the files were modified manually with each change signed by the user.  It so happens that running the modified files against an >empty< configuration.txt will restore the cofiguration files to their original unconfigured state.
+
+The special strings '//-DHT' and '//+DHT' are markers so that the changes we made can be found.
+
+This should be almost like the files were modified manually with each change signed by the user.  It so happens that running the modified files against an >empty< configuration.txt will restore the cofiguration files to their original unconfigured state.
+
 Yes, my initials are "DHT".  Change the 2 lines in the python file if you need to.  "DHT" is a string that doesn't show up much in code so grep won't be finding it extraniously.  
