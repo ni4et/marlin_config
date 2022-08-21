@@ -1,0 +1,33 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "customize",
+            "type": "shell",
+            "command": "python3",
+            "args": ["C:/Work/FLSUN-Marlin/marlin_config/marlin_config.py",
+                "${workspaceRoot}/Marlin"]
+
+
+        },
+        {
+            "label": "download to sd",
+            "type": "shell",
+            "command": "copy",
+            "args": [
+                "${workspaceRoot}\\.pio\\build\\BIGTREE_OCTOPUS_V1\\firmware.elf",
+                "E:\\"
+                ]
+
+
+        },
+        
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "echo ${board}"
+        }
+    ]
+}
