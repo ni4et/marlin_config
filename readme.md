@@ -24,11 +24,11 @@ Lines that start with "//#define" will comment out the target line.
         //#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
 
 The resulting config file will look like this:
----------------------------
-//#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
-#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin //+DHT 
-//-DHT#define AUTO_POWER_FANS         // Turn on PSU if fans need power
----------------------------
+        ---------------------------
+        //#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
+        #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin //+DHT 
+        //-DHT#define AUTO_POWER_FANS         // Turn on PSU if fans need power
+        ---------------------------
 
 The first line is the original line as is.
 The second line is the replacement.
