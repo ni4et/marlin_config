@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Simple tool to port Marlin customizations to new versions of Marlin.
 Usage:
     Collect all desired configuration changes into one file, configuration.txt. Both configuration.h and configuration_adv.h will be scanned so you dont need to know which file holds any particular paramenter.
