@@ -5,17 +5,18 @@ Usage:
     Any unresolved defines will be written to the end of configuration.h. Inspect both files to assure the desired result.
     Build Marlin.
 
-    Users of vscode can put the contents of tasks.json in the .vscode directory and use the task menu to help. Configure this file for your particular environment.
+    Users of vscode can put the contents of tasks.json in the .vscode directory
+    and use the task menu to help. Configure this file for your particular environment.
 
 The syntax of configuration.txt is like this.
 There is no required order, your changes will be placed in the target files where they belong.
 
-Commment lines look like this:
+Commment lines start with an '@' sign and will be ignored.:
 
+    @ My customizations for my cube and octopus board.
     @ #define NOZZLE_TO_PROBE_OFFSET { 22, 0, 0 }
 
-Lines that start with "#define" will replace lines in 
-
+Lines that start with "#define" will replace the coresponding lines in the configuration files.
 
     #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
 
@@ -36,8 +37,8 @@ The second line is the replacement.
 
 The third line is the original line, now commented out.
 
-The special strings '//-DHT' and '//+DHT' are markers so that the changes we made can be found.
+The special strings '//-DHT' and '//+DHT' are markers so that the changes we made can be found. Lines that contain either of these strings will be recovered to their orignal content before new changes are applied.
 
 This should be almost like the files were modified manually with each change signed by the user.  It so happens that running the modified files against an >empty< configuration.txt will restore the cofiguration files to their original unconfigured state.
 
-Yes, my initials are "DHT".  Change the 2 lines in the python file if you need to.  "DHT" is a string that doesn't show up much in code so grep won't be finding it extraniously.  
+Yes, my initials are "DHT".  Change the 2 lines in the python file if you need to.  "DHT" is a string that doesn't show up much in code so grep won't be finding it extraneously.  
