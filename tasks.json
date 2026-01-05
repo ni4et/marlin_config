@@ -17,7 +17,7 @@
             "type": "shell",
             "command": "copy",
             "args": [
-                "${workspaceRoot}\\.pio\\build\\BIGTREE_OCTOPUS_V1\\firmware.elf",
+                "${workspaceRoot}\\.pio\\build\\BIGTREE_OCTOPUS_V1\\firmware.bin",
                 "E:\\"
                 ]
 
