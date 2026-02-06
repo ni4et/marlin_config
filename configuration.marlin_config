@@ -1,0 +1,199 @@
+@ Configuration for octopus board and 24V motors
+@ DHT 3/2022
+@ DHT 1/2024
+@ DHT 1/2026 20260103
+
+#define CUSTOM_MACHINE_NAME "Flsun_cube"
+#define MOTHERBOARD BOARD_BTT_OCTOPUS_V1_1 //BT
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define Z_SAFE_HOMING
+#define EXTRUDERS 2
+#define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
+@ #define PSU_ACTIVE_HIGH true     // Set 'false' for ATX, 'true' for X-Box
+#define TEMP_SENSOR_0 1000
+#define TEMP_SENSOR_1 1000
+#define TEMP_SENSOR_BED 1
+#define PIDTEMPBED
+#define EXTRUDE_MAXLENGTH 600
+#define E0_AUTO_FAN_PIN FAN2_PIN
+#define E1_AUTO_FAN_PIN FAN2_PIN
+#define USE_CONTROLLER_FAN
+#define CONTROLLER_FAN_PIN FAN1_PIN
+
+//#define BOARD_ST7920_DELAY_1               240 // These will cause compile fails in xxpins.h
+//#define BOARD_ST7920_DELAY_2                160
+//#define BOARD_ST7920_DELAY_3               1000
+#define HOTEND_OFFSET_X {0.0, 18.20} // (in mm) for each extruder, offset of the hotend on the X axis
+#define HOTEND_OFFSET_Y {0.0, 0.0}  // (in mm) for each extruder, offset of the hotend on the Y axis
+
+#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define X_DRIVER_TYPE  TMC2208
+#define Y_DRIVER_TYPE  TMC2208
+#define Z_DRIVER_TYPE  TMC2208
+#define E0_DRIVER_TYPE TMC2208
+#define E1_DRIVER_TYPE TMC2208
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 600, 128 }  //  2020-07-16 4Z mode, E=8*200/25mm
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 4, 750  }
+#define BLTOUCH
+#define Z_CLEARANCE_DEPLOY_PROBE    2 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     2.5 // Z Clearance between multiple probes
+#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define NOZZLE_TO_PROBE_OFFSET {100-71.6, 100-101.5, 0 } // Camera under nozzle-camera under probe.
+
+
+
+#define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR false
+#define INVERT_Z_DIR true // For running without splitter 2020-07-16
+#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_UBL
+#define EXTRAPOLATE_BEYOND_GRID
+
+#define STRING_CONFIG_H_AUTHOR "(DHT, STM32F446ZE_btt)" // Who made the changes.
+#define SERIAL_PORT 1 //BT
+#define BAUDRATE 115200 //BT
+#define SERIAL_PORT_2 -1 //BT
+#define EEPROM_SETTINGS      //BT// Persistent storage with M500 and M501
+#define EEPROM_AUTO_INIT   ///BT // Init EEPROM automatically on any errors.
+#define NOZZLE_PARK_MOVE   2   // Park motion: 0 = XY Move, 1 = X Only, 2 = Y Only, 3 = X before Y, 4 = Y before X
+#define SDSUPPORT  //BT
+#define BABYSTEPPING
+#define BABYSTEP_ZPROBE_OFFSET   // Combine M851 Z and Babystepping
+#define BABYSTEP_ZPROBE_GFX_OVERLAY
+#define LIN_ADVANCE
+
+#define ARC_SUPPORT
+#define FWRETRACT
+#define G26_MESH_VALIDATION
+#define NOZZLE_PARK_FEATURE
+//#define ASSISTED_TRAMMING - No trammiing
+#define PINS_DEBUGGING
+#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define SET_PROGRESS_MANUALLY
+#define PSU_CONTROL
+#define PSU_ACTIVE_STATE HIGH
+#define PSU_POWERUP_DELAY   500
+#define AUTO_REPORT_POSITION
+#define MONITOR_DRIVER_STATUS
+
+#define X_BED_SIZE 250
+#define Y_BED_SIZE 260
+#define Z_MAX_POS 300
+#define PROBING_MARGIN 0
+
+#define BLTOUCH_SET_5V_MODE 
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#define USE_PROBE_FOR_Z_HOMING
+#define GRID_MAX_POINTS_X 5
+#define M114_DETAIL
+@#define REVERSE_ENCODER_DIRECTION
+#define REVERSE_SELECT_DIRECTION
+
+@ Sensorless homing -- supress warning
+#define DIAG_JUMPERS_REMOVED
+#define MULTIPLE_PROBING 2
+
+
+
+#define GCODE_CASE_INSENSITIVE
+
+#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
+//#define AUTO_POWER_FANS         //Not needed with OCTOPUS_V1_1 - Board powers fans.
+//#define AUTO_POWER_E_FANS
+//#define AUTO_POWER_CONTROLLERFAN
+//#define AUTO_POWER_CHAMBER_FAN
+//#define AUTO_POWER_COOLER_FAN
+#define PSU_DEFAULT_OFF               // Keep power off until enabled directly with M80
+
+#define PREVENT_COLD_EXTRUSION
+
+#define GCODE_MACROS
+#define GCODE_MACROS_SLOTS       10  // Up to 10 may be used
+#define GCODE_MACROS_SLOT_SIZE  128  // Maximum length of a single macro
+#define CHOPPER_TIMING CHOPPER_DEFAULT_24V
+#define HYBRID_THRESHOLD
+#define Z_HYBRID_THRESHOLD       16
+#define E0_HYBRID_THRESHOLD     25
+#define E1_HYBRID_THRESHOLD     24
+
+
+#define BACKLASH_COMPENSATION
+#define BACKLASH_GCODE
+
+#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_SUBMENU
+
+#define ENABLE_LEVELING_AFTER_G28
+
+#define INPUT_SHAPING_X
+#define INPUT_SHAPING_Y
+#define SHAPING_MENU                // Add a menu to the LCD to set shaping parameters.
+#define TMC_DEBUG
+#define INVERT_E0_DIR true
+#define INVERT_E1_DIR true
+
+#define PREHEAT_2_LABEL       "PETG"
+#define PREHEAT_2_TEMP_HOTEND 230
+#define PREHEAT_2_TEMP_BED    80
+#define PREHEAT_2_TEMP_CHAMBER 0
+#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_3_LABEL       "TPU"
+#define PREHEAT_3_TEMP_HOTEND 220
+#define PREHEAT_3_TEMP_BED    45
+#define PREHEAT_3_TEMP_CHAMBER 0
+#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
+
+
+@ Extra button and sensors
+@ REMAP:
+@ X_DIAG_PIN  PG6  Allocated to endstop
+@ Y_DIAG_PIN  PG9  Allocated to endstop
+@ Z_DIAG_PIN  PG10 BUTTON3 -- CLEAN
+@ Z2_DIAG_PIN PG11 BUTTON4 -- ALL OFF
+@ E0_DIAG_PIN PG12 FIL_RUNOUT_PIN
+@ E1_DIAG_PIN PG13 FIL_RUNOUT2_PIN
+@ E2_DIAG_PIN PG14 FIL_SNAG_PIN
+@ E3_DIAG_PIN PG15 BUTTON8 PARK
+
+
+
+#define FILAMENT_RUNOUT_SENSOR
+#define NUM_RUNOUT_SENSORS   2
+#define FILAMENT_RUNOUT_SCRIPT "M600 T%c"
+#define CUSTOM_USER_BUTTONS
+#define ADVANCED_PAUSE_FEATURE // Needed to enable M600
+#define BUTTON1_PIN PG6
+#define BUTTON2_PIN PG9
+#define BUTTON3_PIN PG10
+#define BUTTON4_PIN PG12
+
+
+@ BUTTON1 defined like I want it by default. G28 HOME
+
+#define BUTTON2_HIT_STATE     LOW
+#define BUTTON2_WHEN_PRINTING false
+#define BUTTON2_GCODE         "M125"
+#define BUTTON2_DESC          "Park"
+
+@ M125
+@#define FILAMENT_CHANGE_RETRACT_LENGTH 20
+@#define FILAMENT_CHANGE_X_POS 0
+@#define FILAMENT_CHANGE_Y_POS 250
+@#define FILAMENT_CHANGE_Z_POS 10 // Added to Z
+
+#define BUTTON3_HIT_STATE     LOW
+#define BUTTON3_WHEN_PRINTING false
+#define BUTTON3_GCODE         "G1 Z80 F10000" "\n" "G1 X125 Y0"
+#define BUTTON3_DESC          "Clean"
+
+#define BUTTON4_HIT_STATE     LOW
+#define BUTTON4_WHEN_PRINTING true
+#define BUTTON4_GCODE         "M112"
+#define BUTTON4_DESC          "Full Shutdown"
+
+
