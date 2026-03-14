@@ -1,0 +1,50 @@
+@configuration_extra.marlin_config
+@ Extra button and sensors
+@ REMAP:
+@ X_DIAG_PIN  PG6  Allocated to endstop
+@ Y_DIAG_PIN  PG9  Allocated to endstop
+@ Z_DIAG_PIN  PG10 BUTTON3 -- CLEAN
+@ Z2_DIAG_PIN PG11 BUTTON4 -- ALL OFF
+@ E0_DIAG_PIN PG12 FIL_RUNOUT_PIN
+@ E1_DIAG_PIN PG13 FIL_RUNOUT2_PIN
+
+
+
+@ E3_DIAG_PIN PG15 BUTTON8 PARK
+
+
+
+#define FILAMENT_RUNOUT_SENSOR
+#define NUM_RUNOUT_SENSORS   2
+#define FILAMENT_RUNOUT_SCRIPT "M600 T%c"
+#define CUSTOM_USER_BUTTONS
+#define ADVANCED_PAUSE_FEATURE // Needed to enable M600
+#define BUTTON1_PIN PG14 // FIL_SNAG & QUICK STOP Normally Closed
+#define BUTTON2_PIN  PG10 //
+#define BUTTON3_PIN PG11 //
+#define BUTTON4_PIN  PG14 //
+
+
+@ BUTTON1 defined like I want it by default. G28 HOME
+
+#define BUTTON2_HIT_STATE     LOW
+#define BUTTON2_WHEN_PRINTING false
+#define BUTTON2_GCODE         "M125"
+#define BUTTON2_DESC          "Park"
+
+@ M125
+@#define FILAMENT_CHANGE_RETRACT_LENGTH 20
+@#define FILAMENT_CHANGE_X_POS 0
+@#define FILAMENT_CHANGE_Y_POS 250
+@#define FILAMENT_CHANGE_Z_POS 10 // Added to Z
+
+#define BUTTON3_HIT_STATE     LOW
+#define BUTTON3_WHEN_PRINTING false
+#define BUTTON3_GCODE         "G1 Z80 F10000" "\n" "G1 X125 Y0"
+#define BUTTON3_DESC          "Clean"
+
+#define BUTTON4_HIT_STATE     LOW
+#define BUTTON4_WHEN_PRINTING true
+#define BUTTON4_GCODE         "M112"
+#define BUTTON4_DESC          "Full Shutdown"
+
