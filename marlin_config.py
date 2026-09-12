@@ -58,9 +58,9 @@ dictFile=os.path.join(os.path.dirname(sys.argv[0]),dictFileName)
 
 # the files in the working directory:
 # Where is the marlin working directory from here:
-dWork=sys.argv[1] # Passed as an argument from tasks.json
-configPost='configuration_adv.h'
-configPre='configuration.h'
+dwork=os.getcwd() # The working directory is where the script is run from.
+configPost='Configuration_adv.h'
+configPre='Configuration.h'
 
 featureRE='(^\s*//)?\s*#define\s+(\w+)' # Recognizes #defines with or without comment out
 
@@ -218,7 +218,7 @@ def finish(inFile):
             print('CHECK THE FILE!\n\n')
             print(insrtStr,file=fileS)
             print(insrtStr+"// The following defines in the template didn't get used.",file=fileS)
-            print(insrtStr,file=fileS)
+            print(insrtStr,file=file/S)
             for line4 in D:
                 print(D[line4]+insrtStr,file=fileS) # always the line added.
             print(insrtStr,file=fileS)
@@ -228,7 +228,14 @@ def finish(inFile):
 
 
 def main():
-    loadDictionary(dictFile)
+    for argument in sys.argv[1:]:
+        if os.path.isdir(argument):
+            os.chdir(argument)
+            dWork=argument
+        else:
+            loadDictionary(argument)
+            loadedDictionary = True
+
     # In and out files can be the same:
     translateFile(os.path.join(dWork,configPre))
     translateFile(os.path.join(dWork,configPost))
